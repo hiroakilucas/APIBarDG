@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 
 namespace APIBarDG
 {
@@ -22,30 +23,26 @@ namespace APIBarDG
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddControllers();
             services.AddSwaggerGen(c => {
 
                 c.SwaggerDoc("v1",
-                    new Info
+                    new OpenApiInfo
                     {
-                        Title = "Indicadores Econômicos",
+                        Title = "API Bar do DG",
                         Version = "v1",
-                        Description = "Exemplo de API REST criada com o ASP.NET Core 2.2 para consulta a indicadores econômicos",
-                        Contact = new Contact
+                        Description = "Exemplo de API REST criada com o ASP.NET Core para controle de comanda do bar do DG",
+                        Contact = new OpenApiContact
                         {
                             Name = "Renato Groffe",
-                            Url = "https://github.com/renatogroffe"
+                            Url = new Uri("https://github.com/renatogroffe")
                         }
                     });
             });
-
-            services.AddControllers();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -56,7 +53,7 @@ namespace APIBarDG
             // Ativando middlewares para uso do Swagger
             app.UseSwagger();
             app.UseSwaggerUI(c => {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Indicadores Econômicos V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API Bar do DG");
             });
 
             app.UseHttpsRedirection();
