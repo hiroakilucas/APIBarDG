@@ -13,10 +13,10 @@ namespace APIBarDG.Controllers
     [Produces("application/json")]
     public class ComandaController : ControllerBase
     {
- 
-        //private readonly InventoryContext _context;
 
-        //public ComandaController(InventoryContext context)
+        //private readonly ComandaDAO _context;
+
+        //public ComandaController(ComandaDAO context)
         //{
         //    _context = context;
         //}
@@ -37,7 +37,8 @@ namespace APIBarDG.Controllers
         }
 
         [HttpPost]
-        public async Comanda SetComanda(Comanda comanda)
+        //public async Comanda SetComanda(Comanda comanda)
+        public Comanda SetComanda(Comanda comanda)
         {
 
             Comanda Comanda = new Comanda();
@@ -57,5 +58,26 @@ namespace APIBarDG.Controllers
             return Comanda;
 
         }
+
+        // DELETE: api/Products/5
+        //[HttpDelete("{id}")]
+        //public async Task<ActionResult<Comanda>> DeleteItem(int id)
+        //{
+            //var comanda = await _context.Comanda.FindAsync(id);
+            //if (products == null)
+            //{
+            //    return NotFound();
+            //}
+
+            //_context.Products.Remove(products);
+            //await _context.SaveChangesAsync();
+
+        //    return comanda;
+        //}
+
+        //private bool ItemExists(int id)
+        //{
+        //    return _context.Comanda.Any(e => e.ID == id);
+        //}
     }
 }

@@ -36,8 +36,8 @@ namespace APIBarDG
                         Description = "Exemplo de API REST criada com o ASP.NET Core para controle de comanda do bar do DG",
                         Contact = new OpenApiContact
                         {
-                            Name = "Renato Groffe",
-                            Url = new Uri("https://github.com/renatogroffe")
+                            Name = "Lucas Hiroaki",
+                            Url = new Uri("https://github.com/hiroakilucas")
                         }
                     });
             });
