@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using APIBarDG.Model;
+using APIBarDG.Model.Comanda;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -27,18 +28,12 @@ namespace APIBarDG.Controllers
             Comanda Comanda = new Comanda(); 
             Item Item = new Item();
 
-            Item.ID = 1;
-            Item.Nome = "Banana";
-            Item.Preco = 1.1;
-            Comanda.ID = 1;
-            Comanda.Item = Item;
-
             return Comanda;
         }
 
         [HttpPost]
         //public async Comanda SetComanda(Comanda comanda)
-        public Comanda SetComanda(Comanda comanda)
+        public Comanda RegistraItemComanda(Comanda comanda)
         {
 
             Comanda Comanda = new Comanda();
