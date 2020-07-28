@@ -7,7 +7,10 @@ namespace APIBarDG.Data.Comanda
 {
     public partial class ComandaDAO //: DbContext
     {
+        //public getComanda(int idComanda)
 
+        //public registraItem(nomeItem);
 
+        //public limpaComanda(idComanda);
     }
 }

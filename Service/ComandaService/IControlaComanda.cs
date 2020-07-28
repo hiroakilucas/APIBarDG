@@ -11,10 +11,9 @@ namespace APIBarDG.Service.ComandaService
     interface IControlaComanda
     {
 
-        Comanda RegistraItemComanda(Comanda comanda, Item item);
-        NotaFiscal FechamentoComanda(Comanda comanda);
-
-        void LimpaComanda(int id);
+        Comanda RegistraItemComanda(int idComanda, string nomeItem);
+        NotaFiscal FechamentoComanda(int comanda);
+        Comanda LimpaComanda(int id);
 
     }
 }

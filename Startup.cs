@@ -41,6 +41,9 @@ namespace APIBarDG
                         }
                     });
             });
+
+            //services.AddControllersWithViews();
+            //services.AddDbContext<ComandaContext>()
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

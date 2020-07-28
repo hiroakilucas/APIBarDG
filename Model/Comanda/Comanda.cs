@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Security.Policy;
 
 namespace APIBarDG.Model.Comanda
 {
     public class Comanda
     {
         public int ID { get; set; }
-        public List<Item> Item { get; set; }
+        public List<Item> Itens { get; set; }
+
+        public double PromocaoAguaPedidos { get; set; }
+        public double PromocaoAguaRestantes { get; set; }
     }
 }

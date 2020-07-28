@@ -2,10 +2,10 @@
 {
 	enum EnumItens
 	{
-		Cerveja,
-		Conhaque,
-		Suco,
-		Agua
+		Cerveja = 1,
+		Conhaque = 2,
+		Suco = 3,
+		Agua = 4
 	}
 
 }

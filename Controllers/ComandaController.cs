@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using APIBarDG.Bussines.Comanda;
 using APIBarDG.Model;
 using APIBarDG.Model.Comanda;
+using APIBarDG.Model.NotaFiscal;
+using APIBarDG.Util.Enum;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Logging;
 
 namespace APIBarDG.Controllers
@@ -13,17 +17,10 @@ namespace APIBarDG.Controllers
     [Route("[controller]")]
     [Produces("application/json")]
     public class ComandaController : ControllerBase
-    {
-
-        //private readonly ComandaDAO _context;
-
-        //public ComandaController(ComandaDAO context)
-        //{
-        //    _context = context;
-        //}
+    {        
 
         [HttpGet("{id}")]
-        public Comanda Get(int id)
+        public Comanda GetComanda(int id)
         {
             Comanda Comanda = new Comanda(); 
             Item Item = new Item();
@@ -33,39 +30,57 @@ namespace APIBarDG.Controllers
 
         [HttpPost]
         //public async Comanda SetComanda(Comanda comanda)
-        public Comanda RegistraItemComanda(Comanda comanda)
+        public Comanda RegistraItemComanda(int idComanda, string nomeItem)
         {
 
-            Comanda Comanda = new Comanda();
-            //Item Item = new Item();
+            Comanda comanda = new Comanda();
+            comanda.Itens = new List<Item>();
 
-            //Item.ID = 1;
-            //Item.Nome = "Banana";
-            //Item.Preco = 1.1;
-            //Comanda.ID = 1;
-            //Comanda.Item = Item;
+            ComandaBussines comandaBussines = new ComandaBussines();
 
-            //_context.Comanda.Add(Comanda);
+            comandaBussines.RegistraItemComanda(idComanda, nomeItem);
+
+            Item item = new Item();
+
+            item.ID = 1;
+            item.Nome = "Banana";
+            item.Preco = 1.1;
+
+            comanda.Itens.Add(item);
             //await _context.SaveChangesAsync();
 
             //return CreatedAtAction("GetComanda", new { id = comanda.ID }, comanda);
 
-            return Comanda;
+            return comanda;
 
         }
+
+        
+
+        //[HttpPost]
+        //public Comanda LimpaComanda(int idComanda)
+        //{
+        //    Comanda comanda = new Comanda();
+        //    ComandaBussines comandaBussines = new ComandaBussines();
+
+        //    comanda = comandaBussines.LimpaComanda(idComanda);
+
+        //    return comanda;
+        //}
+
 
         // DELETE: api/Products/5
         //[HttpDelete("{id}")]
         //public async Task<ActionResult<Comanda>> DeleteItem(int id)
         //{
-            //var comanda = await _context.Comanda.FindAsync(id);
-            //if (products == null)
-            //{
-            //    return NotFound();
-            //}
+        //var comanda = await _context.Comanda.FindAsync(id);
+        //if (products == null)
+        //{
+        //    return NotFound();
+        //}
 
-            //_context.Products.Remove(products);
-            //await _context.SaveChangesAsync();
+        //_context.Products.Remove(products);
+        //await _context.SaveChangesAsync();
 
         //    return comanda;
         //}
