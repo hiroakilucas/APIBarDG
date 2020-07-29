@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Security.Policy;
 
 namespace APIBarDG.Model.Comanda
@@ -10,5 +11,10 @@ namespace APIBarDG.Model.Comanda
 
         public double PromocaoAguaPedidos { get; set; }
         public double PromocaoAguaRestantes { get; set; }
+
+        public static implicit operator List<object>(Comanda v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

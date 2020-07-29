@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace APIBarDG.Service.ComandaService
 {
-    interface IControlaComanda
+    public interface IControlaComanda
     {
 
         Comanda RegistraItemComanda(int idComanda, string nomeItem);

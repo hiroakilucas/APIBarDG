@@ -1,5 +1,6 @@
 ﻿using APIBarDG.Bussines.Comanda;
 using APIBarDG.Model.NotaFiscal;
+using APIBarDG.Service.ComandaService;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -15,13 +16,18 @@ namespace APIBarDG.Controllers
     public class NotaFiscalController
     {
 
+        private readonly IControlaComanda _controlaComanda;
+
+        public NotaFiscalController( IControlaComanda controlaComanda)
+        {
+            _controlaComanda = controlaComanda;
+        }
+
         [HttpPost]
         public NotaFiscal FechamentoComanda(int idComanda)
         {
             NotaFiscal notaFiscal = new NotaFiscal();
-            ComandaBussines comandaBussines = new ComandaBussines();
-
-            notaFiscal = comandaBussines.FechamentoComanda(idComanda);
+            _controlaComanda.FechamentoComanda(idComanda);
 
             return notaFiscal;
         }
